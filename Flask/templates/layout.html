@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Food Demand Forecasting"/>
+  <meta property="og:description" content="Project Centric Learning | Smart Agriculture & Food"/>
+  <meta property="og:image" content="https://i.imgur.com/71zYrby.png"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Food Demand Forecasting"/>
+  <meta name="twitter:description" content="Project Centric Learning | Smart Agriculture & Food"/>
+  <meta name="twitter:image" content="https://i.imgur.com/71zYrby.png"/>
+  {% if title %}
+  <title>{{ title }} — Food Demand Forecasting</title>
+  {% else %}
+  <title>Food Demand Forecasting</title>
+  {% endif %}
+</head>
+
+<body class="container">
+  <div>
+    <header>
+      <nav>
+        {% set nav_items = [{"title": "Home", "slug": "/"}, {"title": "Predict", "slug": "/predict"}] %}
+        <ul>
+          {% for nav_item in nav_items %}
+          <li><a href="{{ nav_item['slug'] }}">{{ nav_item["title"] }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+  </div>
+
+  <footer>
+    <p>Developed by <a href="https://www.linkedin.com/in/vikash-kumar-a071a0205/" target="_blank">Vikash</a>, <a
+            href="https://www.linkedin.com/in/srikar-ksv/" target="_blank">Srikar</a> and
+      <a href="https://www.linkedin.com/in/akashp33/" target="_blank">Akash</a></p>
+  </footer>
+
+  {% block script_tags %}{% endblock script_tags %}
+</body>
+
+</html>
