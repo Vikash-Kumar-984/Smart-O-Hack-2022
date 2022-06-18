@@ -1,0 +1,288 @@
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/********************* Header   *********************/
+
+header {
+  margin: 2.5rem 0 1.3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.gradient-text {
+  background-image: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+h1.gradient-text a {
+  text-decoration: none;
+}
+
+h1.gradient-text a {
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav li {
+  margin-right: 30px;
+  list-style-type: none;
+}
+
+nav li:nth-child(1) a {
+  transition: color 0.3s;
+}
+
+nav li:nth-child(1) a:hover {
+  color: var(--dark-blue);
+}
+
+nav li:nth-child(2) {
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.5em 0.8em;
+  border-radius: var(--border-radius-lg);
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.greeting {
+  margin-top: 3rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.greeting h2 {
+  font-size: 5rem;
+}
+
+.greeting p {
+  font-size: 1.5rem;
+  color: var(--grey-text);
+  max-width: 60vw;
+  margin: auto;
+}
+
+.info {
+  margin: 3rem 10% 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+
+/********************* Forms *********************/
+
+form {
+  max-width: 80vh;
+  margin: auto;
+  background-color: var(--dark-blue);
+  padding: 2em 3em;
+  border-radius: 6px;
+}
+
+form p {
+  font-size: 2rem;
+  margin-bottom: 0.1rem;
+}
+
+label {
+  display: block;
+  font-size: 2rem;
+}
+
+input,
+select {
+  border: none;
+  border-radius: var(--border-radius-sm);
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 0.2em 0.5em;
+}
+
+select {
+  padding: 0.5em;
+}
+
+.switch {
+  display: flex;
+}
+
+.switch label {
+  background-color: var(--home-bc);
+  padding: 0.3em 0.5em;
+  transition: all 0.1s ease-in-out;
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.switch label:hover {
+  cursor: pointer;
+}
+
+.switch label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switch label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  border: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+input:checked + label {
+  background-color: var(--red);
+}
+
+.prediction {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--green);
+}
+
+input[type=submit] {
+  margin-top: 2rem;
+  width: fit-content;
+}
+
+/********************* Footer *********************/
+
+footer::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  top: -15px;
+  background: var(--gradient-text);
+}
+
+footer {
+  position: relative;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+footer p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: var(--purple);
+}
+
+/********************* Errors *********************/
+
+.error-msg {
+  font-size: 1.4rem;
+}
+
+.error-stack {
+  border: 3px solid var(--white);
+  padding: 0.5em;
+  overflow-x: scroll;
+}
+
+/********************* Media queries *********************/
+@media only screen and (max-width: 71.875em) {
+  /* 1150px */
+  .container {
+    width: 90%;
+  }
+}
+
+
+@media only screen and (max-width: 53.125em) {
+  /* 850px */
+  .greeting h2 {
+    font-size: 3.5rem;
+  }
+
+  .greeting p {
+    font-size: 1.1rem;
+    max-width: 80vw;
+  }
+
+  nav a {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav li:nth-child(2) {
+    margin-right: 0;
+    padding: 0.2em 0.6em;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+}
+
+@media only screen and (max-width: 37.5em) {
+  /* 600px */
+  h1 {
+    font-size: 3rem;
+  }
+
+  .info {
+    font-size: 1rem;
+  }
+
+  form {
+    padding: 1.8em;
+  }
+
+  form p, label {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 1rem;
+  }
+
+}
+
+@media only screen and (max-width: 25em) {
+  /* 400px */
+  .container {
+    width: 95%;
+  }
+}

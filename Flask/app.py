@@ -1,32 +1,24 @@
-import pandas as pd
 import numpy as np
 import pickle
-import os
 from flask import Flask, request, render_template
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__)
+
 
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
-@app.route('/home', methods=['GET'])
-def about():
-    return render_template('index.html')
-
-@app.route('/pred', methods=['GET'])
-def upload():
-    return render_template('upload.html')
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    print("[INFO] loading model...")
-
-    with open("fdemand.pkl", "rb") as f:
-        model = pickle.load(f)
-    
-        # For POST request
+    # For POST request
     if request.method == 'POST':
+        print("[INFO] Loading model...")
+
+        with open("fdemand.pkl", "rb") as f:
+            model = pickle.load(f)
+
         y = request.form.values()
         input_features = []
         print(y)
@@ -38,14 +30,19 @@ def predict():
         print(input_features)
         features_value = [np.array(input_features)]
         print(features_value)
-        features_name = ['homepage_featured', 'emailer_for_promotion', 'op_area', 'cuisine', 
-        'city_code', 'region_code', 'category']
-        prediction = model.predict(features_value)
-        output = prediction[0]
-        print(output)
-        return render_template('upload.html', prediction_text=output)
 
-    return render_template('upload.html')#, prediction_text=output)
+        prediction = model.predict(features_value)
+        output = round(prediction[0])
+        print(output)
+        return render_template('predict.html', title="Predict", prediction_text=output)
+
+    return render_template('predict.html', title="Predict")  # , prediction_text=output)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="heading gradient-text">Let's Predict</h1>
+<form method="POST" action="{{ url_for('predict') }}">
+  <div>
+    <p>Featured on Home page?</p>
+    <div class="switch">
+      <input type="radio" name="homepage_featured" id="yes" value="0" required>
+      <label for="yes">Yes</label>
+      <input type="radio" name="homepage_featured" id="no" value="1" checked required>
+      <label for="no">No</label>
+    </div>
+  </div>
+
+  <div class="mt-1">
+    <p>Promoted in emails?</p>
+    <div class="switch">
+      <input type="radio" name="emailer_for_promotion" id="yes1" value="0" required>
+      <label for="yes1">Yes</label>
+      <input type="radio" name="emailer_for_promotion" id="no1" value="1" checked required>
+      <label for="no1">No</label>
+    </div>
+  </div>
+
+  <div class="mt-1">
+    <label for="op-code">Opcode</label>
+    <input type="number" id="op-code" id="Op_code" name="Op_code" required>
+  </div>
+
+  <div class="mt-1">
+    <label for="city-code">City code</label>
+    <input type="number" id="city-code" name="city_code" required>
+  </div>
+
+  <div class="mt-1">
+    <label for="region-code">Region code</label>
+    <input type="number" id="region-code" name="region_code" required>
+  </div>
+
+  <div class="mt-1">
+    <label for="cuisine">Cuisine</label>
+    <select class="custom-select" id="cuisine" name="cuisine" required>
+      <option value="0" name="cuisine">Thai</option>
+      <option value="1" name="cuisine">Indian</option>
+      <option value="2" name="cuisine">Italian</option>
+      <option value="3" name="cuisine">Continental</option>
+    </select>
+  </div>
+
+  <div class="mt-1">
+    <label for="catalogue">Catalogue</label>
+    <select class="custom-select" id="catalogue" name="catalogue" required>
+      <option value="0" name="category">Beverages</option>
+      <option value="1" name="category">Extras</option>
+      <option value="2" name="category">Soup</option>
+      <option value="3" name="category">Salad</option>
+      <option value="4" name="category">Rice Bowl</option>
+      <option value="5" name="category">Other Snacks</option>
+      <option value="6" name="category">Starters</option>
+      <option value="7" name="category">Sandwich</option>
+      <option value="8" name="category">Desert</option>
+      <option value="9" name="category">Biryani</option>
+      <option value="10" name="category">Pasta</option>
+      <option value="11" name="category">Pizza</option>
+      <option value="12" name="category">Fish</option>
+      <option value="13" name="category">Seafood</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-md btn-blue">
+  {% if prediction_text %}
+  <p class="prediction">Prediction is: {{ prediction_text }} orders</p>
+  {% endif %}
+</form>
+{% endblock %}
